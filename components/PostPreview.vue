@@ -1,13 +1,12 @@
 <template>
-  <section class="main-content">
-    <div class="container">
-      <h1 class="title has-text-centered">
-        Recent Posts
-      </h1>
-      <div class="columns is-multiline">
-        <div class="column is-half" v-for="post in posts">
-          <div class="card">
-            <header class="card-header">
+  <section class="section container">
+    <h1 class="title has-text-centered">
+      Recent Posts
+    </h1>
+    <div class="columns is-multiline">
+      <div class="column is-half" v-for="post in posts">
+        <div class="card">
+          <header class="card-header">
             <p class="card-header-title">
               {{ post.fields.title }}
             </p>
@@ -27,8 +26,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 
 <script>

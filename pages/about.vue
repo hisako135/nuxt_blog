@@ -1,21 +1,28 @@
 <template>
-  <div class="main-content">
-    <div class="container">
-      <h2 class="title is-2">About Me</h2>
-        <img
-          :src="person.image.fields.file.url"
-          :alt="person.image.fields.title"
-          class=""
-        >
-        <ul>
-          <li>{{person.name}}</li>
-          <li>{{person.shortBio}}</li>
-          <li>GitHub：{{person.github}}</li>
-          <li>twitter：{{person.twitter}}</li>
-        </ul>
-      <h3 class="title is-4">What I hope to achieve:</h3>
-    </div>
-  </div>
+  <article class="section">
+    <section class="container">
+      <h2 class="title has-text-centered">About Me</h2>
+      <div class="media">
+        <figure class="media-left">
+          <img
+            :src="person.image.fields.file.url"
+            :alt="person.image.fields.title"
+          >
+        </figure>
+        <div class="media-content">
+          <ul>
+            <li>{{person.name}}</li>
+            <li>{{person.shortBio}}</li>
+            <li>GitHub：{{person.github}}</li>
+            <li>twitter：{{person.twitter}}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <h3 class="title has-text-centered">What I hope to achieve:</h3>
+    </section>
+  </article>
 </template>
 
 <script>
