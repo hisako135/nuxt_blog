@@ -12,13 +12,37 @@
         </div>
       </div>
     </section>
+    <PostPreview :posts="posts"></PostPreview>
   </div>
 </template>
 
 <script>
+  import PostPreview from '~/components/PostPreview.vue'
+  import {createClient} from '~/plugins/contentful.js'
+
+  const client = createClient()
   export default {
     head: {
       title: 'Home'
+    },
+    components: {
+      PostPreview
+    },
+    data () {
+      return {
+        posts: []
+      }
+    },
+    asyncData ({ env }) {
+      return client.getEntries({
+        // fetch all blog posts sorted by creation date
+        'content_type': env.CTF_BLOG_POST_TYPE_ID,
+        order: '-sys.createdAt'
+      }).then(entries => {
+        return {
+          posts: entries.items
+        }
+      }).catch(console.error)
     }
   }
 </script>

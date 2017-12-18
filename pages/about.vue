@@ -1,24 +1,45 @@
 <template>
   <div class="main-content">
     <div class="container">
-      <h2 class="title is-2">About this website.</h2>
-      <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
-      <br>
-      <h4 class="title is-4">What we hope to achieve:</h4>
-      <ul>
-        <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-        <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-        <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-        <li>Ut non enim metus.</li>
-      </ul>
+      <h2 class="title is-2">About Me</h2>
+        <img
+          :src="person.image.fields.file.url"
+          :alt="person.image.fields.title"
+          class=""
+        >
+        <ul>
+          <li>{{person.name}}</li>
+          <li>{{person.shortBio}}</li>
+          <li>GitHub：{{person.github}}</li>
+          <li>twitter：{{person.twitter}}</li>
+        </ul>
+      <h3 class="title is-4">What I hope to achieve:</h3>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  head: {
-    title: 'About'
+  import {createClient} from '~/plugins/contentful.js'
+
+  const client = createClient()
+
+  export default {
+    head: {
+      title: 'About'
+    },
+    data () {
+      return {
+        person: []
+      }
+    },
+    asyncData ({ env }) {
+      return client.getEntries({
+        'content_type': env.CTF_BLOG_POST_TYPE_ID
+      }).then(entries => {
+        return {
+          person: entries.items[0].fields.author.fields
+        }
+      }).catch(console.error)
+    }
   }
-}
 </script>

@@ -8,6 +8,7 @@
             Hisako135
           </nuxt-link>
           <nuxt-link active-class="is-active" to="/" class="nav-item is-tab" exact>Home</nuxt-link>
+          <nuxt-link active-class="is-active" to="/post" class="nav-item is-tab" exact>Post</nuxt-link>
           <nuxt-link active-class="is-active" to="/about" class="nav-item is-tab" exact>About</nuxt-link>
         </div>
       </div>
