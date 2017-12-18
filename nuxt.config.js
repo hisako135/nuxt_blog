@@ -1,4 +1,5 @@
 const config = require('./.contentful.json')
+const axios = require('axios')
 
 module.exports = {
   /*
@@ -38,6 +39,19 @@ module.exports = {
       }
     }
   },
+  /*
+  ** Generate 
+  */
+  // generate: {
+  //   routes: function () {
+  //     return axios.get('http://localhost:3000/post')
+  //     .then((res) => {
+  //       return res.datta.map((post) =>  {
+  //         return '/post/' + post.slug
+  //       })
+  //     })
+  //   }
+  // },
   /*
   ** Values that will be available via process.env
   */
