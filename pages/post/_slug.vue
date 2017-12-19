@@ -17,8 +17,8 @@
         <vue-markdown>{{ currentPost.fields.body }}</vue-markdown>
       </div>
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <nuxt-link active-class="is-active" to="" class="pagination-previous">Previous</nuxt-link>
-        <nuxt-link class="pagination-next" :to="nextPost">Next page</nuxt-link>
+        <nuxt-link v-if="prevPost" class="pagination-previous" :to="prevPost">Previous</nuxt-link>
+        <nuxt-link v-if="nextPost" class="pagination-next" :to="nextPost">Next page</nuxt-link>
       </nav>
     </article>
 
@@ -61,9 +61,6 @@
         const current = posts.filter(function (item) {
           return item.fields.slug === params.slug
         })
-        // console.log(entries.items)
-        // console.log(params.slug)
-        // console.log(current)
         return {
           allPosts: posts,
           currentPost: current[0]
@@ -73,12 +70,22 @@
     computed: {
       dateOrder: function () {
         for (let i = 0; i < this.allPosts.length; i++) {
-          let date = new Date(this.allPosts[i].fields.publishDate).getTime()
-          return console.log(date)
+          if (this.allPosts[i].fields.publishDate === this.currentPost.fields.publishDate) {
+            return i
+          }
         }
       },
       nextPost: function () {
-        return 'hoge'
+        if (this.dateOrder > 0) {
+          return this.allPosts[this.dateOrder - 1].fields.slug
+        }
+      },
+      prevPost: function () {
+        if (this.dateOrder < this.allPosts.length) {
+          return this.allPosts[this.dateOrder + 1].fields.slug
+        } else if (this.dateOrder === this.allPosts.length) {
+          return false
+        }
       }
     }
   }
