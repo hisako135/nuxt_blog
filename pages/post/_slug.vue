@@ -71,6 +71,12 @@
       }).catch(console.error)
     },
     computed: {
+      dateOrder: function () {
+        for (let i = 0; i < this.allPosts.length; i++) {
+          let date = new Date(this.allPosts[i].fields.publishDate).getTime()
+          return console.log(date)
+        }
+      },
       nextPost: function () {
         return 'hoge'
       }
