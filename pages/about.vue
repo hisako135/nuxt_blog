@@ -4,7 +4,7 @@
       <h2 class="title has-text-centered">About Me</h2>
       <div class="media">
         <figure class="media-left">
-          <!-- <img :src="person.image.fields.file.url" :alt="person.image.fields.title"> -->
+          <img :src="person.image.fields.file.url" :alt="person.image.fields.title">
         </figure>
         <div class="media-content">
           <ul>
