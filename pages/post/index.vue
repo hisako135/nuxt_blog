@@ -43,7 +43,7 @@
       return client.getEntries({
         // fetch all blog posts sorted by creation date
         'content_type': env.CTF_BLOG_POST_TYPE_ID,
-        order: '-sys.createdAt'
+        order: '-fields.publishDate'
       }).then(entries => {
         return {
           posts: entries.items

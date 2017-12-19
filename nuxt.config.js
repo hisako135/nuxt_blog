@@ -40,18 +40,18 @@ module.exports = {
     }
   },
   /*
-  ** Generate 
+  ** Generate configuration
   */
-  // generate: {
-  //   routes: function () {
-  //     return axios.get('http://localhost:3000/post')
-  //     .then((res) => {
-  //       return res.datta.map((post) =>  {
-  //         return '/post/' + post.slug
-  //       })
-  //     })
-  //   }
-  // },
+  generate: {
+    // routes: function () {
+    //   return axios.get('http://localhost:3000/post')
+    //   .then((res) => {
+    //     return res.data.map((post) =>  {
+    //       return '/post/' + post.slug
+    //     })
+    //   })
+    // }
+  },
   /*
   ** Values that will be available via process.env
   */
