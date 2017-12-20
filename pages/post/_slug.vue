@@ -17,8 +17,8 @@
         <vue-markdown>{{ currentPost.fields.body }}</vue-markdown>
       </div>
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <nuxt-link v-if="prevPost" class="pagination-previous" :to="prevPost">&laquo; {{prevTitle}}</nuxt-link>
-        <nuxt-link v-if="nextPost" class="pagination-next" :to="nextPost">{{nextTitle}} &raquo;</nuxt-link>
+        <nuxt-link v-if="prevPost" class="pagination-previous" :to="prevPost.fields.slug">&laquo; {{ prevPost.fields.title }}</nuxt-link>
+        <nuxt-link v-if="nextPost" class="pagination-next" :to="nextPost.fields.slug">{{ nextPost.fields.title }} &raquo;</nuxt-link>
       </nav>
     </article>
 
@@ -79,28 +79,14 @@
         if (this.dateOrder === 0) {
           return false
         } else {
-          return this.allPosts[this.dateOrder - 1].fields.slug
+          return this.allPosts[this.dateOrder - 1]
         }
       },
       prevPost: function () {
         if (this.dateOrder === this.allPosts.length - 1) {
           return false
         } else {
-          return this.allPosts[this.dateOrder + 1].fields.slug
-        }
-      },
-      nextTitle: function () {
-        if (this.dateOrder === 0) {
-          return false
-        } else {
-          return this.allPosts[this.dateOrder - 1].fields.title
-        }
-      },
-      prevTitle: function () {
-        if (this.dateOrder === this.allPosts.length - 1) {
-          return false
-        } else {
-          return this.allPosts[this.dateOrder + 1].fields.title
+          return this.allPosts[this.dateOrder + 1]
         }
       }
     }
