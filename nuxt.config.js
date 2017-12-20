@@ -48,6 +48,12 @@ module.exports = {
   */
   plugins: ['./plugins/contentful.js'],
   /*
+  ** router
+  */
+  router: {
+    base: '/SSRblog/'
+  },
+  /*
   ** Generate configuration
   */
   generate: {
