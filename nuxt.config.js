@@ -57,7 +57,6 @@ module.exports = {
   ** Generate configuration
   */
   generate: {
-    minify: false,
     routes () {
       return client.getEntries({
           'content_type': config.CTF_BLOG_POST_TYPE_ID
