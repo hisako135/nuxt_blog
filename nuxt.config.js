@@ -1,4 +1,3 @@
-const axios = require('axios')
 const contentful = require('contentful')
 const config = require('./.contentful.json')
 const client = contentful.createClient({
