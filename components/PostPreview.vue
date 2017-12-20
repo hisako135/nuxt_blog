@@ -19,7 +19,7 @@
             </div>
           </div>
           <footer class="card-footer">
-            <nuxt-link :to="{ name: 'post-slug', params: { slug: post.fields.slug }}" class="card-footer-item">
+            <nuxt-link :to="{ name: 'posts-slug', params: { slug: post.fields.slug }}" class="card-footer-item">
               Read More
             </nuxt-link>
           </footer>

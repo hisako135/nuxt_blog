@@ -2,6 +2,7 @@
   <section>
     <header class="header">
       <img
+        v-if="currentPost.fields.heroImage"
         :src="currentPost.fields.heroImage.fields.file.url + '?fit=scale&w=350&h=196'"
         :srcset="`${currentPost.fields.heroImage.fields.file.url}?w=350&h=87&fit=fill 350w, ${currentPost.fields.heroImage.fields.file.url}?w=1000&h=250&fit=fill 1000w, ${currentPost.fields.heroImage.fields.file.url}?w=2000&h=500&fit=fill 2000w`"
         size="100vw"
@@ -10,12 +11,10 @@
     </header>
     <article class="section">
       <div class="headline">
-        <time class="tiny">{{ ( new Date(currentPost.fields.publishDate)).toDateString() }}</time>
-        <h1>{{ currentPost.fields.title }}</h1>
+        <h1 class="title has-text-centered">{{ currentPost.fields.title }}</h1>
+        <p class="headline__date has-text-right">{{ ( new Date(currentPost.fields.publishDate)).toDateString() }}</p>
       </div>
-      <div>
-        <vue-markdown>{{ currentPost.fields.body }}</vue-markdown>
-      </div>
+      <vue-markdown class="content">{{ currentPost.fields.body }}</vue-markdown>
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <nuxt-link v-if="prevPost" class="pagination-previous" :to="prevPost.fields.slug">&laquo; {{ prevPost.fields.title }}</nuxt-link>
         <nuxt-link v-if="nextPost" class="pagination-next" :to="nextPost.fields.slug">{{ nextPost.fields.title }} &raquo;</nuxt-link>
@@ -92,3 +91,17 @@
     }
   }
 </script>
+
+<style scoped>
+.headline {
+  margin-bottom: 1.5rem;
+}
+
+.headline__date {
+  font-size: .8rem;
+}
+
+.content {
+  margin-bottom: 3rem;
+}
+</style>

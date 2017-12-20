@@ -3,9 +3,9 @@
     <section class="container">
       <h2 class="title has-text-centered">About Me</h2>
       <div class="media">
-        <figure class="media-left">
+        <!-- <figure class="media-left">
           <img :src="person.image.fields.file.url" :alt="person.image.fields.title">
-        </figure>
+        </figure> -->
         <div class="media-content">
           <ul>
             <li>{{person.name}}</li>
@@ -47,3 +47,9 @@
     }
   }
 </script>
+
+<style scoped>
+.container {
+  margin-bottom: 3rem;
+}
+</style>

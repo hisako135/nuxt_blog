@@ -1,12 +1,17 @@
-const config = require('./.contentful.json')
 const axios = require('axios')
+const contentful = require('contentful')
+const config = require('./.contentful.json')
+const client = contentful.createClient({
+  space: config.CTF_SPACE_ID,
+  accessToken: config.CTF_CDA_ACCESS_TOKEN
+})
 
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s | Hisako135',
+    titleTemplate: '%s | Demo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,17 +45,21 @@ module.exports = {
     }
   },
   /*
+  ** plugins
+  */
+  plugins: ['./plugins/contentful.js'],
+  /*
   ** Generate configuration
   */
   generate: {
-    // routes: function () {
-    //   return axios.get('http://localhost:3000/post')
-    //   .then((res) => {
-    //     return res.data.map((post) =>  {
-    //       return '/post/' + post.slug
-    //     })
-    //   })
-    // }
+    minify: false,
+    routes () {
+      return client.getEntries({
+          'content_type': config.CTF_BLOG_POST_TYPE_ID
+        }).then((entries) => {
+        return [...entries.items.map(entry => `posts/${entry.fields.slug}`)]
+      })
+    }
   },
   /*
   ** Values that will be available via process.env
