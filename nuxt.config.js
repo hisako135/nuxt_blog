@@ -51,7 +51,7 @@ module.exports = {
   ** router
   */
   router: {
-    base: '/nux_blog/'
+    base: '/nuxt_blog/'
   },
   /*
   ** Generate configuration
