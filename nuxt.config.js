@@ -51,7 +51,7 @@ module.exports = {
   ** router
   */
   router: {
-    base: '/SSRblog/'
+    base: '/nux_blog/'
   },
   /*
   ** Generate configuration
