@@ -15,9 +15,6 @@
         </div>
       </div>
     </section>
-    <section class="container">
-      <h3 class="title has-text-centered">What I hope to achieve:</h3>
-    </section>
   </article>
 </template>
 
